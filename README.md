@@ -6,3 +6,8 @@ React web app for displaying dog breeds retrieved from dog.ceo
 npm install
 npm start
 ```
+
+## Testing
+```
+npm test
+```

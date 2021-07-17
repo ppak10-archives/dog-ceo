@@ -1,14 +1,19 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "outDir": "./dist/",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "module": "es6",
     "target": "es5",
     "jsx": "react-jsx",
     "allowJs": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "paths": {
+      "*": ["src/*"]
+    },
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
