@@ -4,7 +4,6 @@
  */
 
 // Node Modules
-import React from 'react';
 import {render} from 'react-dom';
 
 // Components

@@ -17,10 +17,18 @@
   },
   "homepage": "https://github.com/ppak10/dog-ceo#readme",
   "devDependencies": {
+    "@types/jest": "^26.0.24",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "@types/webpack": "^5.28.0",
+    "eslint": "^7.30.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.3.2",
+    "husky": "^4.3.8",
+    "jest": "^27.0.6",
+    "lint-staged": "^11.0.1",
+    "prop-types": "^15.7.2",
     "ts-loader": "^9.2.3",
     "typescript": "^4.3.5",
     "webpack-cli": "^4.7.2",
@@ -29,5 +37,10 @@
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
