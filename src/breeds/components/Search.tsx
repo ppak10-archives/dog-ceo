@@ -27,6 +27,7 @@ const StyledInput = styled.input`
   border: none;
   font-family: monospace;
   font-size: 1em;
+  margin: 0;
   outline: none;
   padding: 0;
   position: absolute;
