@@ -4,13 +4,11 @@
  */
 
 // Node Modules
+import {func, string} from 'prop-types';
 import {useCallback, useEffect, useRef, useState} from 'react';
 import {useSelector} from 'react-redux';
 import styled from 'styled-components';
 
-
-// Hooks
-import {useBreedsAPI} from  '../hooks';
 
 // Styled Components
 const StyledSearch = styled.div`
@@ -35,10 +33,8 @@ const StyledInput = styled.input`
   width: 100%;
 `;
 
-export default function Search() {
+export default function Search({value, setValue}) {
   // Hooks
-  const {get} = useBreedsAPI();
-
   const ref = useRef();
 
   const {isLoading, statusCode} = useSelector(({api}) => api.breeds);
@@ -46,7 +42,6 @@ export default function Search() {
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [placeholder, setPlaceholder] = useState('hello world');
-  const [value, setValue] = useState('');
   const [suggestion, setSuggestion] = useState(null);
   const [autocompleteValue, setAutocompleteValue] = useState('');
 
@@ -62,11 +57,6 @@ export default function Search() {
     }
   }, [isLoading, statusCode]);
 
-  useEffect(() => {
-    // Retrieve available dog breeds.
-    get();
-  }, [get]);
-
   const handleKeydown = useCallback((e) => {
     // Tab
     if (e.keyCode === 9) {
@@ -74,7 +64,7 @@ export default function Search() {
       e.preventDefault();
       setValue(suggestion);
     }
-  }, [suggestion]);
+  }, [suggestion, value]);
 
   useEffect(() => {
     const current = ref.current;
@@ -114,16 +104,24 @@ export default function Search() {
   };
 
   return (
-    <StyledSearch>
-      <StyledInput
-        disabled={isDisabled}
-        type="text"
-        onChange={handleChange}
-        placeholder={placeholder}
-        ref={ref}
-        value={value}
-      />
-      <StyledPre>{autocompleteValue}</StyledPre>
-    </StyledSearch>
+    <fieldset>
+      <legend>Add Filter</legend>
+      <StyledSearch>
+        <StyledInput
+          disabled={isDisabled}
+          type="text"
+          onChange={handleChange}
+          placeholder={placeholder}
+          ref={ref}
+          value={value}
+        />
+        <StyledPre>{autocompleteValue}</StyledPre>
+      </StyledSearch>
+    </fieldset>
   );
+}
+
+Search.propTypes = {
+  setValue: func,
+  value: string,
 }

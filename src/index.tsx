@@ -5,8 +5,17 @@
 
 // Node Modules
 import {render} from 'react-dom';
+import {Provider} from 'react-redux';
 
 // Components
 import App from './App';
 
-render(<App />, document.getElementById('root'));
+// Store
+import store from './store';
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
