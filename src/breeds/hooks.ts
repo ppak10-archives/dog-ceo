@@ -9,12 +9,12 @@ import {useDispatch} from 'react-redux';
 
 
 // Actions
-import {setBreeds} from './actions';
+import {setBreedsAll} from './actions';
 
 // Hooks
 import {useAPIResponse} from 'api/hooks';
 
-import {getBreeds} from './routes';
+import {getBreedsAll} from './routes';
 
 export function useBreedsAPI() {
   // Hooks
@@ -24,8 +24,8 @@ export function useBreedsAPI() {
   // Callbacks
   const get = useCallback(
     async () => handleResponse(
-      () => getBreeds(),
-      (data) => dispatch(setBreeds(data.message || {})),
+      () => getBreedsAll(),
+      (data) => dispatch(setBreedsAll(data.message)),
     ),
     [dispatch, handleResponse],
   );

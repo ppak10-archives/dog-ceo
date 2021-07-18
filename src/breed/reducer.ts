@@ -1,20 +1,23 @@
 /**
  * reducer.ts
- * Reducer for managing dog breeds.
+ * Reducer for managing dog breed image.
  */
 
 const INITIAL_STATE = {
-  all: {},
+  image: {},
 };
 
 export default function reducer(state = INITIAL_STATE, {payload, type}) {
   switch (type) {
-    case 'SET_BREEDS_ALL':
+    case 'SET_BREED_IMAGE':
       return {
         ...state,
-        all: payload.message,
+        image: {
+          ...state.image,
+          [payload.breed]: payload.message,
+        },
       };
-    default:
+    default: 
       return state;
   }
 }

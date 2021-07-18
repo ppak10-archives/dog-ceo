@@ -12,6 +12,7 @@ import styled from 'styled-components';
 // Components
 import Exception from 'common/components/Exception';
 import Search from './breeds/components/Search';
+import ListItem from './breed/components/ListItem';
 
 // Hooks
 import {useBreedsAPI} from  './breeds/hooks';
@@ -19,18 +20,20 @@ import {useBreedsAPI} from  './breeds/hooks';
 // Styled Components
 const StyledApp = styled.div`
   font-family: sans-serif;
+  padding: 0 1em;
+
+  fieldset {
+    border-radius: 1em;
+  }
 `;
 
 const StyledBreedsList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(auto-fit, 10em);
+  grid-template-columns: repeat(auto-fit, 20em);
   grid-template-rows: auto;
   grid-gap: 1em;
   list-style: none;
-`;
-
-const StyledBreedsListItem = styled.li`
-  background-color: red;
+  padding: 1em;
 `;
 
 export default function App() {
@@ -48,13 +51,11 @@ export default function App() {
   }, [get]);
 
   // JSX
-  const breedsJSX = statusCode === 200 && isLoading === false ?
-    Object.keys(breedsAll)
-      .filter((breed) => breed.startsWith(value))
-      .map((key) => (
-      <StyledBreedsListItem key={key}>{key}</StyledBreedsListItem>
-    ))
-    : (
+  const breedsJSX = statusCode === 200 && isLoading === false
+  ? Object.keys(breedsAll)
+    .filter((breed) => breed.startsWith(value))
+    .map((key) => (<ListItem key={key} breed={key} />))
+  : (
     <li>Loading...</li>
   );
 
