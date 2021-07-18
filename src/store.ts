@@ -9,10 +9,12 @@ import thunkMiddleware from 'redux-thunk';
 
 // Reducers
 import api from 'api/reducer';
+import breeds from './breeds/reducer';
 import common from 'common/reducer';
 
 const reducers = combineReducers({
   api,
+  breeds,
   common,
 });
 

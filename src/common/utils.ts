@@ -11,13 +11,7 @@ export const handleFetchRequest = async (
   method: string = 'GET',
   request = null,
   ) => {
-    const headers = {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    };
-
     const options = {
-      headers,
       method,
     };
 

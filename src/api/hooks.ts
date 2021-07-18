@@ -17,9 +17,7 @@ import {createActionKey} from './utils';
 export function useAPIResponse(key: string) {
   // Hooks
   const dispatch = useDispatch();
-  // const {post: postAuthRefresh} = useAuthRefreshAPI();
 
-  // TODO: Add in try / catch / exception.
   const handleResponse = useCallback(
     async (onRequest, onSuccess, onError = (data) => data) => {
 

@@ -13,13 +13,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(tsx)$/,
+        test: /\.(ts|tsx)$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
     ],
   },
   resolve: {
+    alias: {
+      api: path.resolve(__dirname, './src/api'),
+      config: path.resolve(__dirname, './src/config'),
+      common: path.resolve(__dirname, './src/common'),
+    },
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
